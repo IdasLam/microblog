@@ -16,8 +16,7 @@ jobs:
             python3 -m venv venv
             . venv/bin/activate
             sudo apt install pylint
-            make install
-            pip install coverage
+            make install-dev
             pip install -r requirements.txt
       # Step 3: run linter and tests
       - run:
