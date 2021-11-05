@@ -23,7 +23,7 @@ jobs:
           command: |
             . venv/bin/activate
             make test
-            pytest -v --cov=calculator
+      #pytest -v --cov=calculator          
 
       # - run:
       #     name: deploy
