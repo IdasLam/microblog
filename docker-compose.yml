@@ -1,0 +1,11 @@
+version: "3"
+services:
+    test:
+        volumes:
+            - .:/home/microblog
+            - /home/microblog/.venv
+        build: 
+            context: .
+            dockerfile: ./docker/Dockerfile_test
+        # entrypoint: sh
+    # prod:
