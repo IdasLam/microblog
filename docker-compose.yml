@@ -16,7 +16,7 @@ services:
         environment:
             DATABASE_URL: mysql+pymysql://microblog:microblog@dbserver:3306/microblog
         ports:
-            - 8000:5000
+            - 80:5000
 
     dbserver:
         image: mysql:5.7
