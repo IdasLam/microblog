@@ -216,3 +216,7 @@ install-deploy:
 	${pip} install -r requirements/deploy.txt
 	@${pip} install ansible[azure]
 
+# target: test-docker                 - Run test container in docker
+.PHONY: test-docker
+test-docker:
+	docker-compose up test
