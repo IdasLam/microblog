@@ -20,7 +20,7 @@ jobs:
                 name: Publish docker image
                 command:  | 
                     echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-                    docker build -f docker/Dockerfile_prod -t idalam/microblog
+                    docker build -f docker/Dockerfile_prod -t idalam/microblog .
                     docker push idalam/microblog:latest
 
 
