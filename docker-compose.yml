@@ -9,9 +9,8 @@ services:
             dockerfile: ./docker/Dockerfile_test
     
     prod:
-        build: 
-            context: .
-            dockerfile: ./docker/Dockerfile_prod
+        restart: always
+        image: idalam/microblog:latest
         links:
             - dbserver
         environment:
