@@ -6,7 +6,6 @@ jobs:
         
         steps:
             - checkout
-            - setup_remote_docker
             - run:
                 name: Run test
                 command: docker-compose up test
@@ -17,7 +16,6 @@ jobs:
         
         steps:
             - checkout
-            - setup_remote_docker
             - run:
                 name: Publish docker image
                 command:  | 
