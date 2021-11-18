@@ -1,0 +1,8 @@
+---
+packages:
+    - fail2ban
+    # - tmux
+    - git
+    - unattended-upgrades
+    - python3-pip
+    - python3-setuptools
