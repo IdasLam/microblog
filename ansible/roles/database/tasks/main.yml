@@ -1,0 +1,21 @@
+---
+-   name: pip install
+    pip:
+        name: "{{ packages }}"
+
+-   name: Start MySQL docker container
+    docker_container:
+        name: "{{ database_name }}"
+        image: mysql:5.7
+        state: present
+        volumes:
+            - ./mysql:/var/lib/mysql
+        env:
+            MYSQL_DATABASE: microblog
+            MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+            MYSQL_USER: microblog
+            MYSQL_PASSWORD: "{{ database_password }}"
+            MYSQL_ROOT_PASSWORD: "{{ database_password }}"
+        ports:
+            - "3306:3306"
+        container_default_behavior: "compatibility"
