@@ -1,0 +1,15 @@
+---
+-   name: pip install
+    pip:
+        name: docker
+
+-   name: Start Microblog
+    docker_container:
+        name: "microblog"
+        image: idalam/microblog:latest
+        state: present
+        restart_policy: always
+        env:
+            MYSQL_HOST: "{{ groups.database[0] }}"
+            DATABASE_URL: "mysql+pymysql://microblog:microblog@{{ groups.database[0] }}:3306/microblog"
+        container_default_behavior: "compatibility"

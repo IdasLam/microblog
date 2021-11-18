@@ -1,0 +1,10 @@
+---
+-   hosts: appServer
+    become: yes
+    become_method: sudo
+    remote_user: deploy
+    roles:
+      - docker
+      - appServer
+    vars:
+      ansible_python_interpreter: /usr/bin/python3.7
