@@ -1,0 +1,14 @@
+---
+root_password: $6$7/Wa/Xw9SKnEWbUl$1CbNQkgajrr3inPYRg.hnmxwqxpxupxTV4IZhSKu5.VxIXltRbrrVuhOuMKz0XBKiU0mW6hchliaFzuECDpQ20
+
+server_user: deploy
+server_password: $6$.iGmI8eCd4$vO1b.Xzs52xRUA2ki9QtDXv9Fz3MnwC1I8LhYFoxhPwp.yzbLnrEsCVnCVjkX78Hr9U8coBAC32yTgVS1ET3C.
+server_user_groups:
+    -   sudo
+
+pub_ssh_key_location:
+    -   ~/.ssh/azureci.pub
+
+database_name: 'dbserver'
+database_password: microblog
+
