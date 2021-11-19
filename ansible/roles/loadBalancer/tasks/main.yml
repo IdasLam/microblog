@@ -3,19 +3,11 @@
   template:
     src: templates/nginx.conf.j2
     dest: /etc/nginx/nginx.conf
-    # mode: 744
-    # remote_src: true
 
 - name: Copy load-balancer.conf.j2
   template:
     src: templates/load-balancer.conf.j2
     dest: /etc/nginx/sites-available/load-balancer.conf
-    # mode: 744
-
-# -   name: Check if load-balancer.conf is in sites-enabled
-#     stat:
-#         path: /etc/nginx/sites-enabled/load-balancer.conf
-#     register: load_balancer
 
 - name: Link load-balancer.conf to sites-enabled
   file:
@@ -23,4 +15,3 @@
     path: /etc/nginx/sites-enabled/load-balancer.conf
     state: link
     force: yes
-  # when: not load_balancer.stat.exists
