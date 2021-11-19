@@ -6,3 +6,4 @@ packages:
     - unattended-upgrades
     - python3-pip
     - python3-setuptools
+    - python-simplejson

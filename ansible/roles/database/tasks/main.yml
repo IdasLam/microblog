@@ -7,7 +7,7 @@
     docker_container:
         name: "{{ database_name }}"
         image: mysql:5.7
-        state: present
+        state: started
         volumes:
             - ./mysql:/var/lib/mysql
         env:
