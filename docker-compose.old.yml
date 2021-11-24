@@ -1,0 +1,31 @@
+version: "3"
+services:
+    test:
+        volumes:
+            - .:/home/microblog
+            - /home/microblog/.venv
+        build: 
+            context: .
+            dockerfile: ./docker/Dockerfile_test
+    
+    prod:
+        restart: always
+        image: idalam/microblog:latest
+        links:
+            - dbserver
+        environment:
+            DATABASE_URL: mysql+pymysql://microblog:microblog@dbserver:3306/microblog
+        ports:
+            - 8000:5000
+
+    dbserver:
+        image: mysql:5.7
+        command: --default-authentication-plugin=mysql_native_password
+        volumes:
+            - ./mysql:/var/lib/mysql
+        environment:
+            MYSQL_DATABASE: microblog
+            MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+            MYSQL_USER: microblog
+            MYSQL_PASSWORD: microblog
+
