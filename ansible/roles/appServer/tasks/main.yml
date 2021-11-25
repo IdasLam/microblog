@@ -6,7 +6,7 @@
 -   name: Start Microblog
     docker_container:
         name: "microblog"
-        image: idalam/microblog:latest
+        image: idalam/microblog:flask-exporter
         state: started
         restart_policy: always
         ports:
