@@ -48,3 +48,43 @@
     url: http://127.0.0.1:9100/metrics
     method: GET
     status_code: 200
+
+
+# - name: install packages
+#   apt:
+#     name: 
+#       - python3-pip
+
+# -   name: pip install
+#     pip:
+#         name: docker
+
+
+# - name: Create a network
+#   docker_network:
+#     name: monitor
+
+# - name: Start node-exporter image
+#   docker_container:
+#     name: "node-exporter"
+#     image: "prom/node-exporter"
+#     state: started
+#     restart_policy: unless-stopped
+#     pull: yes
+#     volumes:
+#       - /proc:/host/proc:ro
+#       - /sys:/host/sys:ro
+#       - /:/rootfs:ro
+#     network_mode: default
+#     networks:
+#       - name: monitor
+#     recreate: yes
+#     container_default_behavior: no_defaults
+#     ports:
+#       - "9100:9100"
+
+# - name: Check if node exporter emits metrices
+#   uri:
+#     url: http://127.0.0.1:9100/metrics
+#     method: GET
+#     status_code: 200

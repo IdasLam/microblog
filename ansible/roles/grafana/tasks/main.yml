@@ -14,8 +14,29 @@
     enabled: true
     state: started
 
-- name: "Check if Grafana is accessible."
-  uri:
-    url: http://127.0.0.1:3000
-    method: GET
-    status_code: 200
+# - name: Create empty grafana-data volume
+#   docker_volume:
+#     name: grafana-data
+
+# - name: Install node-exporter
+#   docker_container:
+#     name: "grafana"
+#     image: "grafana/grafana"
+#     restart_policy: unless-stopped
+#     # state: started
+#     pull: yes
+#     volumes:
+#       - grafana-data:/var/lib/grafana
+#     # network_mode: host
+#     network_mode: default
+#     networks:
+#       - name: monitor
+#     recreate: yes
+#     ports:
+#       - "3000:3000"
+
+# - name: "Check if Grafana is accessible."
+#   uri:
+#     url: http://127.0.0.1:3000
+#     method: GET
+#     status_code: 200
