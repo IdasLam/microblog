@@ -12,7 +12,7 @@
             - ./mysql:/var/lib/mysql
         env:
             MYSQL_DATABASE: microblog
-            MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+            # MYSQL_RANDOM_ROOT_PASSWORD: "yes"
             MYSQL_USER: microblog
             MYSQL_PASSWORD: "{{ database_password }}"
             MYSQL_ROOT_PASSWORD: "{{ database_password }}"
