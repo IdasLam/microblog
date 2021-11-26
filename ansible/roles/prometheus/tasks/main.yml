@@ -72,6 +72,10 @@
     method: GET
     status_code: 200
 
+-   name: pip install
+    pip:
+        name: docker
+
 # - name: Copy config
 #   template:
 #     src: prometheus.conf.j2
