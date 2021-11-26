@@ -6,6 +6,7 @@
     remote_user: azureuser
     # remote_user: deploy
     roles:
+        - docker
         - node-exporter
         - prometheus
         - grafana
