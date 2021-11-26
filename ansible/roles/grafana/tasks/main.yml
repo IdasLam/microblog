@@ -14,6 +14,34 @@
     enabled: true
     state: started
 
+- name: "Add flask dashboard"
+  community.grafana.grafana_dashboard:
+    grafana_url: "{{ groups['monitoring'][0] }}:3000/"
+    state: present
+    overwrite: yes
+    path: https://gist.githubusercontent.com/AndreasArne/433f902f9b986c301f2b2877454a581f/raw/4898bb2013b469cf74ace82d2d5aa39e073cb069/flaskdash.json
+
+- name: "Add mysql dashboard"
+  community.grafana.grafana_dashboard:
+    grafana_url: "{{ groups['monitoring'][0] }}:3000/"
+    state: present
+    overwrite: yes
+    dashboard_id: 6239
+
+- name: "Add nginx dashboard"
+  community.grafana.grafana_dashboard:
+    grafana_url: "{{ groups['monitoring'][0] }}:3000/"
+    state: present
+    overwrite: yes
+    dashboard_id: 12708
+
+- name: "Add node dashboard"
+  community.grafana.grafana_dashboard:
+    grafana_url: "{{ groups['monitoring'][0] }}:3000/"
+    state: present
+    overwrite: yes
+    dashboard_id: 1860
+    
 # - name: Create empty grafana-data volume
 #   docker_volume:
 #     name: grafana-data
