@@ -1,4 +1,8 @@
 ---
+-   name: pip install
+    pip:
+        name: docker
+
 - name: Copy nginx.conf.j2
   template:
     src: templates/nginx.conf.j2
@@ -15,3 +19,23 @@
     path: /etc/nginx/sites-enabled/load-balancer.conf
     state: link
     force: yes
+
+- name: Start prometheus exporter
+  docker_container:
+    name: nginx-prometheus-exporter
+    image: "nginx/nginx-prometheus-exporter:0.4.2"
+    restart_policy: always
+    state: started
+    ports:
+      - "9113:9113"
+    command: |
+      -nginx.scrape-uri=https://idalam.se/metrics
+      -nginx.retries=10
+      -nginx.ssl-verify=false
+      -web.telemetry-path=/prometheus
+
+-   name: Check if prometheus exporter is accessible
+    uri:
+        url: http://localhost:9113/metrics
+        method: GET
+        status_code: 200

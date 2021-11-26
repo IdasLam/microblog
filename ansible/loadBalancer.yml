@@ -4,6 +4,7 @@
     become_method: sudo
     remote_user: deploy
     roles:
+        - docker
         - nginx
         - loadBalancer
         - https
