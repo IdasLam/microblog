@@ -48,8 +48,30 @@ http {
       ssl_certificate_key /etc/letsencrypt/live/{{ domain_name }}/privkey.pem;
       ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
 
+      location /metrics {
+         stub_status on;
+      }
+
       location / {
          proxy_pass http://app-hosts;
+      }
+   }
+
+   server {
+      listen 443;
+      server_name grafana.{{ domain_name }};
+
+      location / {
+         return 301 http://grafana.{{ domain_name }}$request_uri;
+      }
+   }
+
+   server {
+      listen 80;
+      server_name grafana.{{ domain_name }};
+
+      location / {
+         proxy_pass http://{{ groups['monitoring'][0] }}:3000;
       }
    }
 }
