@@ -41,7 +41,7 @@ jobs:
                 command: |
                     . venv/bin/activate
                     cd ansible
-                    ansible-playbook -vvv gather_vm_instances.yml database.yml appServer.yml
+                    ansible-playbook -vvv gather_vm_instances.yml database.yml appServer.yml loadBalancer.yml monitoring.yml
 
 
 workflows:
