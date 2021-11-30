@@ -2,5 +2,11 @@
 
 . .venv/bin/activate
 
+echo "Make bandit"
+make bandit
+
 echo "Make test"
-exec make test
+make test
+
+
+
