@@ -221,3 +221,13 @@ install-deploy:
 .PHONY: test-docker
 test-docker:
 	docker-compose up test
+
+# target: bandit                 - Run test container in docker
+.PHONY: bandit
+bandit:
+	bandit -r app
+
+# target: bandit                 - Run test container in docker
+.PHONY: zap
+zap:
+	docker run owasp/zap2docker-weekly zap-baseline.py -t https://idalam.se
