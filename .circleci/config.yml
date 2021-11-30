@@ -36,10 +36,15 @@ jobs:
         steps:
             - checkout
             - run:
-                name: Publish docker image
-                command:  | 
+                name: build image
+                command: | 
                     echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
                     docker build -f docker/Dockerfile_prod -t idalam/microblog .
+            - snyk/scan:
+                docker-image-name: idalam/microblog
+            - run:
+                name: Publish docker image
+                command:  
                     docker push idalam/microblog:latest
     
     deploy-playbook:
