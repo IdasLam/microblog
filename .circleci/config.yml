@@ -45,7 +45,7 @@ jobs:
             - run:
                 name: Publish docker image
                 command:  
-                    docker push idalam/microblog:latest
+                    docker push idalam/microblog:flask-exporter
     
     deploy-playbook:
         machine:
