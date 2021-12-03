@@ -40,21 +40,28 @@
         key: "{{ lookup('file', item) }}"
     with_items: "{{ pub_ssh_key_location }}"
 
--   name: Disallow root ssh access
-    lineinfile:
-        path: /etc/ssh/sshd_config
-        regex: "^PermitRootLogin"
-        line: "PermitRootLogin no"
-        state: present
-    notify:
-        - restart ssh
+# -   name: Disallow root ssh access
+#     lineinfile:
+#         path: /etc/ssh/sshd_config
+#         regex: "^PermitRootLogin"
+#         line: "PermitRootLogin no"
+#         state: present
+#     notify:
+#         - restart ssh
 
--   name: Disallow root ssh access
-    lineinfile:
-        path: /etc/ssh/sshd_config
-        regex: "^PasswordAuthentication"
-        line: "PasswordAuthentication no"
-        state: present
+# -   name: Disallow root ssh access
+#     lineinfile:
+#         path: /etc/ssh/sshd_config
+#         regex: "^PasswordAuthentication"
+#         line: "PasswordAuthentication no"
+#         state: present
+#     notify:
+#         - restart ssh
+
+-   name: Add new sshd_config
+        copy:
+        src: files/sshd_config
+        dest: /etc/ssh/sshd_config
     notify:
         - restart ssh
 
