@@ -47,25 +47,25 @@ jobs:
                 command:  
                     docker push idalam/microblog:latest
     
-    deploy-playbook:
-        machine:
-            image: ubuntu-1604:202007-01
+    # deploy-playbook:
+    #     machine:
+    #         image: ubuntu-1604:202007-01
         
-        steps:
-            - checkout
-            - run:
-                name: Install
-                command: |
-                    python3 -m venv venv
-                    . venv/bin/activate
-                    make install-deploy
+    #     steps:
+    #         - checkout
+    #         - run:
+    #             name: Install
+    #             command: |
+    #                 python3 -m venv venv
+    #                 . venv/bin/activate
+    #                 make install-deploy
             
-            - run:
-                name: Run playbooks
-                command: |
-                    . venv/bin/activate
-                    cd ansible
-                    ansible-playbook -vvv gather_vm_instances.yml database.yml appServer.yml loadBalancer.yml monitoring.yml
+    #         - run:
+    #             name: Run playbooks
+    #             command: |
+    #                 . venv/bin/activate
+    #                 cd ansible
+    #                 ansible-playbook -vvv gather_vm_instances.yml database.yml appServer.yml loadBalancer.yml monitoring.yml
 
 
 workflows:
