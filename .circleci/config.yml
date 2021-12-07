@@ -39,13 +39,13 @@ jobs:
                 name: build image
                 command: | 
                     echo "$DOCKERHUB_PASS" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-                    docker build -f docker/Dockerfile_prod -t idalam/microblog:flask-exporter .
+                    docker build -f docker/Dockerfile_prod -t idalam/microblog:latest .
             - snyk/scan:
                 docker-image-name: idalam/microblog
             - run:
                 name: Publish docker image
                 command:  
-                    docker push idalam/microblog:flask-exporter
+                    docker push idalam/microblog:latest
     
     deploy-playbook:
         machine:
