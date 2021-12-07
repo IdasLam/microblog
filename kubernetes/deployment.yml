@@ -13,11 +13,11 @@ spec:
         app: microblog
     spec:
       containers:
-      - image: idalam/microblog:latest
+      - image: idalam/microblog:flask-exporter
         imagePullPolicy: Always
         name: microblog
         ports: 
-        - containerPort: 5000
+          - containerPort: 5000
         env:
           - name: SECRET_KEY
             value: production
